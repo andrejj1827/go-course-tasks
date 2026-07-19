@@ -1,20 +1,3 @@
-// Задание 2: Инвертировать словарь
-//
-// Напиши функцию invertMap, которая:
-//   - принимает map[string]int (название -> число)
-//   - возвращает map[int]string (число -> название)
-//
-// Потом выведи результат: отсортируй ключи по возрастанию и выведи каждую пару.
-//
-// Используй пакет slices для сортировки ключей.
-//
-// Ожидаемый вывод:
-//   1 -> яблоко
-//   2 -> банан
-//   3 -> апельсин
-//
-// Запусти: go run main.go
-
 package main
 
 import (
@@ -22,7 +5,13 @@ import (
 	"slices"
 )
 
-// TODO: напиши функцию invertMap(m map[string]int) map[int]string
+func invertMap(m map[string]int) map[int]string {
+	result := make(map[int]string)
+	for key, value := range m {
+		result[value] = key
+	}
+	return result
+}
 
 func main() {
 	fruits := map[string]int{
@@ -31,12 +20,15 @@ func main() {
 		"апельсин": 3,
 	}
 
-	// TODO: вызови invertMap и сохрани результат
-	// inverted := invertMap(fruits)
+	inverted := invertMap(fruits)
 
-	// TODO: собери ключи из inverted в срез, отсортируй их
-	// и выведи каждую пару в формате: "1 -> яблоко"
+	keys := make([]int, 0, len(inverted))
+	for k := range inverted {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
 
-	_ = fruits
-	_ = slices.Sort[[]int] // убери когда будешь использовать
+	for _, k := range keys {
+		fmt.Printf("%d -> %s\n", k, inverted[k])
+	}
 }
