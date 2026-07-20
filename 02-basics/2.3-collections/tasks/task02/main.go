@@ -29,6 +29,7 @@ func main() {
 	slices.Sort(keys)
 
 	for _, k := range keys {
-		fmt.Printf("%d -> %s\n", k, inverted[k])
+		fmt.Printf("sss")
 	}
 }
+
