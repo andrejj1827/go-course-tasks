@@ -1,10 +1,15 @@
 package main
 
-import "fmt"
-
+import ("fmt"
+	   "slices"
+	   "maps"
+)
 func main() {
 
-	a := 4
-	fmt.Println(a)
-	fmt.Println("Hello, World!")
+	nums := []int{5, 2, 8, 1, 9}
+	m := map[string]int{"б": 2, "а": 1, "в": 3}
+	keys := slices.Collect(maps.Keys(m))
+	fmt.Println(keys)
+	fmt.Println(nums)
+	
 }
